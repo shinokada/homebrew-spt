@@ -1,11 +1,10 @@
 class Spt < Formula
-  desc "A Bash script for Simple Debian Tool. "
-  homepage "https://spt.codewithshin.com"
+  desc "Simple Package Tool - Create Debian packages from GitHub repositories"
+  homepage "https://github.com/shinokada/spt"
   url "https://github.com/shinokada/spt/archive/refs/tags/v0.2.1.tar.gz"
   sha256 "4e20bebc60bf34305f995afb02040ed2f43baa5e7b5a3dace2cace626e817b05"
   license "MIT"
 
-  
   depends_on "curl"
   depends_on "git"
   depends_on "gh"
