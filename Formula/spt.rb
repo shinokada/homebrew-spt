@@ -1,21 +1,17 @@
 class Spt < Formula
-  desc "A Bash script for Simple Debian Tool. "
-  homepage "https://spt.codewithshin.com"
+  desc "Simple Package Tool - Create Debian packages from GitHub repositories"
+  homepage "https://github.com/shinokada/spt"
   url "https://github.com/shinokada/spt/archive/refs/tags/v0.2.1.tar.gz"
-  sha256 "4e20bebc60bf34305f995afb02040ed2f43baa5e7b5a3dace2cace626e817b05"
+  sha256 "a8f31f5a601375c482c877e909585aad6a85457bd7d0fc694c795e982098f557"
   license "MIT"
 
-  
   depends_on "curl"
   depends_on "git"
   depends_on "gh"
   depends_on "dpkg"
 
   def install
-    # Install everything under libexec to preserve directory structure
     libexec.install "spt", "lib"
-    
-    # Create symlink in bin pointing to the script in libexec
     bin.install_symlink libexec/"spt"
   end
 
