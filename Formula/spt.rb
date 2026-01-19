@@ -9,22 +9,16 @@ class Spt < Formula
   depends_on "git"
   depends_on "gh"
   depends_on "dpkg"
-  
-  # Optional but recommended
-  depends_on "jq" => :optional
 
   def install
-    bin.install "spt"
+    # Install everything under libexec to preserve directory structure
+    libexec.install "spt", "lib"
     
-    # Install lib scripts
-    libexec.install "lib"
-    
-    # Create wrapper script that sets LIBDIR
-    (bin/"spt").write_env_script(bin/"spt-orig", LIBDIR: libexec/"lib")
+    # Create symlink in bin pointing to the script in libexec
+    bin.install_symlink libexec/"spt"
   end
 
   test do
-    # Test that spt is executable and shows version
     assert_match version.to_s, shell_output("#{bin}/spt --version")
   end
 end
